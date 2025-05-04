@@ -20,9 +20,6 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-
-
-
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 	children,
 }) => {
@@ -48,7 +45,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 				}
 			},
 		);
-		
 
 		// Clean up
 		return () => {
@@ -67,22 +63,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 			redirectTo: `${window.location.origin}/reset-password`,
 		});
 
-
-		
-		const [loading, setLoading] = useState(true); // Add loading state
-		useEffect(() => {
-			supabase.auth.getSession().then(({ data: { session }, error }) => {
-			  if (error) console.error("Initial session error:", error);
-			  setSession(session);
-			  setLoading(false);
-			});
-		  }, );
+	const [loading, setLoading] = useState(true); // Add loading state
+	useEffect(() => {
+		supabase.auth.getSession().then(({ data: { session }, error }) => {
+			if (error) console.error("Initial session error:", error);
+			setSession(session);
+			setLoading(false);
+		});
+	});
 	return (
 		<AuthContext.Provider
 			value={{
 				user: session?.user ?? null,
 				session,
-				loading,
+				// @ts-ignore:
+				loading, // Provide loading state
 				signUp,
 				signIn,
 				signOut,

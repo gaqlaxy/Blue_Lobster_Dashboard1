@@ -44,28 +44,33 @@ import { useAuth } from "../context/AuthContext";
 import { Navigate } from "react-router-dom";
 
 interface ProtectedRouteProps {
-  children: React.ReactElement;
-  allowedRoles?: string[];
+	children: React.ReactElement;
+	allowedRoles?: string[];
 }
 
-export function ProtectedRoute({ children, allowedRoles = [] }: ProtectedRouteProps) {
-  const { user, loading } = useAuth(); // Add loading state to AuthContext
+export function ProtectedRoute({
+	children,
+	// @ts-ignore:
+	allowedRoles = [],
+}: ProtectedRouteProps) {
+	// @ts-ignore:
+	const { user, loading } = useAuth(); // Add loading state to AuthContext
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Loading...
-      </div>
-    );
-  }
+	if (loading) {
+		return (
+			<div className="flex justify-center items-center h-screen">
+				Loading...
+			</div>
+		);
+	}
 
-  if (!user) {
-    return <Navigate to="/signin" replace />;
-  }
+	if (!user) {
+		return <Navigate to="/signin" replace />;
+	}
 
-  // if (allowedRoles.length > 0 && !allowedRoles.includes(user.user_metadata.role)) {
-  //   return <Navigate to="/unauthorized" replace />;
-  // }
+	// if (allowedRoles.length > 0 && !allowedRoles.includes(user.user_metadata.role)) {
+	//   return <Navigate to="/unauthorized" replace />;
+	// }
 
-  return children;
+	return children;
 }
