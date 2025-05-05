@@ -1,54 +1,43 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Insurance Policy Management Dashboard & Analytics Platform
 
-Currently, two official plugins are available:
+A secure, performant dashboard for managing and visualizing insurance policy data built with React, TypeScript, Supabase, Tailwind CSS, and Cloudflare Pages.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live Website: https://blue-lobster-dashboard1.pages.dev
 
-## Expanding the ESLint configuration
+Tech Stack:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Frontend: React, TypeScript, Vite  
+Styling: Tailwind CSS  
+State Management: useState and useContext
+Backend & Database: Supabase (Auth, Database, RLS)  
+Charting: Recharts  
+Linting/Formatting: Biome JS  
+Hosting: Cloudflare Pages  
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Features:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Full authentication (sign-up, sign-in, password reset, protected routes) via Supabase  
+- Role-based access (policy_holder, agent, admin) enforced in UI and at the database level  
+- Server-side filtering, sorting, and pagination for large datasets  
+- Interactive charts (pie, bar, line) with live filter controls  
+- Policy detail modal with full policy information  
+- Summary cards for at-a-glance metrics  
+- Responsive, accessible UI with Tailwind CSS 
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Getting Started:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. Clone the Repository
+git clone https://github.com/gaqlaxy/Blue_Lobster_Dashboard1.git
+cd Blue_Lobster_Dashboard1
+
+2. Install Dependencies
+npm install
+
+3. Environment Variables
+Create a .env file:
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+4. Run the App
+npm run dev
